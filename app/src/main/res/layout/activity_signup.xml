@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:hint="@string/edittext_signup_username"
+            app:helperText="*Required"
             app:passwordToggleEnabled="true"
             android:padding="8dp">
 
@@ -58,6 +59,7 @@
 
     <Button
         android:id="@+id/btn_signup"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

@@ -24,6 +24,8 @@ public class LoginActivity extends AppCompatActivity {
     public static final int REQUEST_CODE_SIGN_UP = 0;
     public static final String BUNDLE_LOGIN_USERNAME = "loginUsername";
     public static final String BUNDLE_LOGIN_PASSWORD = "loginPassword";
+    public static final String BUNDLE_SIGN_UP_USERNAME = "bundleSignUpUsername";
+    public static final String BUNDLE_SIGN_UP_PASSWORD = "bundleSignUpPassword";
     private TextInputLayout mEditTextUserName;
     private TextInputLayout mEditTextPassword;
     private Button mButtonLogIn;
@@ -44,7 +46,8 @@ public class LoginActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             mEditTextUserName.getEditText().setText(savedInstanceState.getString(BUNDLE_LOGIN_USERNAME));
             mEditTextPassword.getEditText().setText(savedInstanceState.getString(BUNDLE_LOGIN_PASSWORD));
-
+            signupUsername = savedInstanceState.getString(BUNDLE_SIGN_UP_USERNAME);
+            signupPassword = savedInstanceState.getString(BUNDLE_LOGIN_PASSWORD);
         }
 
         setListeners();
@@ -87,9 +90,9 @@ public class LoginActivity extends AppCompatActivity {
         if (mEditTextUserName.getEditText().getText().toString().equals(signupUsername)
                 && mEditTextPassword.getEditText().getText().toString().equals(signupPassword)) {
 
-            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-                Snackbar.make(mLinearLayoutRoot, "Submited !!!", Snackbar.LENGTH_LONG).show();
-            else
+               if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+            Snackbar.make(mLinearLayoutRoot, "Submited !!!", Snackbar.LENGTH_LONG).show();
+           else
                 Snackbar.make(mFrameLayoutRoot, "Submited !!!", Snackbar.LENGTH_LONG).show();
         } else
             Toast.makeText(LoginActivity.this, R.string.invalid_info,
@@ -115,6 +118,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
+        outState.putString(BUNDLE_SIGN_UP_USERNAME, signupUsername);
+        outState.putString(BUNDLE_SIGN_UP_PASSWORD, signupPassword);
         outState.putString(BUNDLE_LOGIN_USERNAME, mEditTextUserName.getEditText().getText().toString());
         outState.putString(BUNDLE_LOGIN_PASSWORD, mEditTextPassword.getEditText().getText().toString());
     }

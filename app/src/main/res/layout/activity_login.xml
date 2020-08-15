@@ -64,6 +64,7 @@
 
         <Button
             android:id="@+id/btn_log_in"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="113dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
@@ -74,6 +75,7 @@
 
         <Button
             android:id="@+id/btn_sign_up"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"

@@ -52,6 +52,7 @@
 
     <Button
         android:id="@+id/btn_signup"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
