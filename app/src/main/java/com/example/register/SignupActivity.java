@@ -65,10 +65,14 @@ public class SignupActivity extends AppCompatActivity {
                 intent.putExtra(EXTRA_SIGNUP_PASSWORD, mEditTextSignUpPassword.getEditText().getText().toString());
                 setResult(RESULT_OK, intent);
 
-                if (mEditTextSignUpUserName.getEditText().getText().toString().isEmpty())
+                if (mEditTextSignUpUserName.getEditText().getText().toString().trim().isEmpty()) {
+
+                    mEditTextSignUpUserName.setErrorEnabled(true);
+                    mEditTextSignUpUserName.setError("Field cannot be empty!");
+
                     Toast.makeText(SignupActivity.this, R.string.empty_edittext_username,
                             Toast.LENGTH_LONG).show();
-
+                }
                 else if (mEditTextSignUpPassword.getEditText().getText().toString().length() == 0)
                     Toast.makeText(SignupActivity.this, R.string.empty_edittext_password,
                             Toast.LENGTH_LONG).show();
@@ -77,5 +81,14 @@ public class SignupActivity extends AppCompatActivity {
                     finish();
             }
         });
+    }
+    private boolean validateInput() {
+        if (mEditTextSignUpUserName.getEditText().getText().toString().trim().isEmpty()) {
+            mEditTextSignUpUserName.setErrorEnabled(true);
+            mEditTextSignUpUserName.setError("Field cannot be empty!");
+            return false;
+        }
+        mEditTextSignUpUserName.setErrorEnabled(false);
+        return true;
     }
 }

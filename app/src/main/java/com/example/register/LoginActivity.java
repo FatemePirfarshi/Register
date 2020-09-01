@@ -82,6 +82,8 @@ public class LoginActivity extends AppCompatActivity {
                 intent.putExtra(EXTRA_LOG_IN_PASSWORD, mEditTextPassword.getEditText().getText().toString());
 
                 startActivityForResult(intent, REQUEST_CODE_SIGN_UP);
+
+                validateInput();
             }
         });
     }
@@ -122,5 +124,15 @@ public class LoginActivity extends AppCompatActivity {
         outState.putString(BUNDLE_SIGN_UP_PASSWORD, signupPassword);
         outState.putString(BUNDLE_LOGIN_USERNAME, mEditTextUserName.getEditText().getText().toString());
         outState.putString(BUNDLE_LOGIN_PASSWORD, mEditTextPassword.getEditText().getText().toString());
+    }
+
+    private boolean validateInput() {
+        if (mEditTextUserName.getEditText().getText().toString().trim().isEmpty()) {
+            mEditTextUserName.setErrorEnabled(true);
+            mEditTextUserName.setError("Field cannot be empty!");
+            return false;
+        }
+        mEditTextUserName.setErrorEnabled(false);
+        return true;
     }
 }
